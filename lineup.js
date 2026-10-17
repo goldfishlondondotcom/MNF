@@ -19,8 +19,8 @@ window.LINEUP = {
 
   teams: [
     {
-      name: "Reds",
-      colour: "#d7182a",
+      name: "Bibs",
+      colour: "#e8332d",
       formation: "2-1-2",
       players: [
         { name: "Kenny",   number: 1, photo: "" },
@@ -33,8 +33,8 @@ window.LINEUP = {
       subs: [],
     },
     {
-      name: "Blues",
-      colour: "#1f5fd6",
+      name: "Shirts",
+      colour: "#6f7f96",
       formation: "2-1-2",
       players: [
         { name: "Ted",     number: 1, photo: "" },

@@ -27,13 +27,20 @@ html, body {
   background: var(--navy);
 }
 
-.bg {
+.bg { position: absolute; inset: 0; overflow: hidden; }
+/* The venue photo, softened so text stays readable on top */
+.bg-photo {
+  position: absolute; inset: -20px;
+  background: url("assets/venue.jpg") center / cover no-repeat;
+  filter: blur(3px) saturate(.85);
+}
+.bg-tint {
   position: absolute; inset: 0;
   background:
     radial-gradient(ellipse at 70% 40%, rgba(60, 90, 180, .35), transparent 60%),
     radial-gradient(ellipse at 10% 100%, rgba(225, 6, 0, .18), transparent 50%),
     repeating-linear-gradient(115deg, rgba(255,255,255,.025) 0 2px, transparent 2px 60px),
-    var(--navy);
+    linear-gradient(180deg, rgba(7, 11, 26, .72), rgba(7, 11, 26, .88));
 }
 
 .streaks { position: absolute; inset: 0; pointer-events: none; }

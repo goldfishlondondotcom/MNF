@@ -97,6 +97,15 @@
     );
   }
 
+  // Waits for the venue photo so the first frames of a recording aren't blank.
+  function loadBackground() {
+    const m = getComputedStyle(stage.querySelector(".bg-photo")).backgroundImage.match(/url\("?(.*?)"?\)/);
+    if (!m) return Promise.resolve();
+    const img = new Image();
+    img.src = m[1];
+    return img.decode().catch(() => console.warn("Couldn't load the venue photo"));
+  }
+
   // ---------- building the scenes ----------
   function buildStreaks() {
     const box = stage.querySelector(".streaks");
@@ -206,7 +215,7 @@
     ["left", "right"].forEach((side, i) => {
       const team = L.teams[i];
       const box = vs.querySelector(".vs-" + side);
-      box.style.background = `linear-gradient(135deg, ${team.colour}, color-mix(in srgb, ${team.colour} 40%, #000))`;
+      box.style.background = `linear-gradient(135deg, color-mix(in srgb, ${team.colour} 90%, transparent), color-mix(in srgb, ${team.colour} 40%, rgba(0, 0, 0, .8)))`;
       box.querySelector(".vs-name").textContent = team.name;
       box.querySelector(".vs-list").innerHTML = team.players.map((p) => `<div><b>${esc(p.number)}</b>${esc(p.name)}</div>`).join("");
     });
@@ -306,6 +315,8 @@
       prev = sc;
     });
     animateVs(tl, prev);
+    // Slow push-in on the venue photo across the whole sequence
+    tl.fromTo(".bg-photo", { scale: 1.02 }, { scale: 1.15, duration: tl.duration(), ease: "none" }, 0);
     return tl;
   }
 
@@ -319,6 +330,7 @@
     const scenes = L.teams.map(buildTeamScene);
     buildVs();
     await document.fonts.ready;
+    await loadBackground();
     await Promise.all([...document.images].map((img) => (img.complete ? null : img.decode().catch(() => {}))));
     const tl = buildTimeline(scenes);
 
