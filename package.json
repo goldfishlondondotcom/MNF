@@ -1,0 +1,21 @@
+{
+  "name": "mnf-team-news",
+  "version": "1.0.0",
+  "description": "Sky Sports style team news sequence for Monday Night Football",
+  "scripts": {
+    "record": "node scripts/record.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goldfishlondondotcom/MNF.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goldfishlondondotcom/MNF/issues"
+  },
+  "homepage": "https://github.com/goldfishlondondotcom/MNF#readme",
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  },
+  "private": true,
+  "type": "module"
+}
