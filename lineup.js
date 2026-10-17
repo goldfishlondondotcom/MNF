@@ -13,9 +13,9 @@
 //  - "subs" is optional - just leave it as [] if there are none.
 //
 window.LINEUP = {
-  date: "Monday 20 October",
-  kickoff: "8:00pm",
-  venue: "Venue TBC",
+  date: "Monday 19 October",
+  kickoff: "7:30pm",
+  venue: "Arsenal Hub",
 
   teams: [
     {
@@ -23,26 +23,26 @@ window.LINEUP = {
       colour: "#d7182a",
       formation: "2-1-2",
       players: [
-        { name: "Sam Carter",     number: 1,  photo: "" },
-        { name: "Dan Hughes",     number: 4,  photo: "" },
-        { name: "Matt Price",     number: 5,  photo: "" },
-        { name: "Chris Doyle",    number: 8,  photo: "" },
-        { name: "Tom Whitfield",  number: 7,  photo: "" },
-        { name: "Alex Mensah",    number: 9,  photo: "" },
+        { name: "Kenny",   number: 1, photo: "" },
+        { name: "Al",      number: 2, photo: "" },
+        { name: "Dave",    number: 3, photo: "" },
+        { name: "Andy",    number: 4, photo: "" },
+        { name: "Mark",    number: 5, photo: "" },
+        { name: "Chris",   number: 6, photo: "" },
       ],
-      subs: [{ name: "Ben Lowe", number: 12, photo: "" }],
+      subs: [],
     },
     {
       name: "Blues",
       colour: "#1f5fd6",
       formation: "2-1-2",
       players: [
-        { name: "Rob Fletcher",   number: 1,  photo: "" },
-        { name: "Liam O'Neill",   number: 3,  photo: "" },
-        { name: "Jack Turner",    number: 6,  photo: "" },
-        { name: "Ollie Grant",    number: 10, photo: "" },
-        { name: "Harry Walsh",    number: 11, photo: "" },
-        { name: "Kieran Brooks",  number: 9,  photo: "" },
+        { name: "Ted",     number: 1, photo: "" },
+        { name: "Eduardo", number: 2, photo: "" },
+        { name: "Justin",  number: 3, photo: "" },
+        { name: "Dom",     number: 4, photo: "" },
+        { name: "Joe C",   number: 5, photo: "" },
+        { name: "Huw",     number: 6, photo: "" },
       ],
       subs: [],
     },

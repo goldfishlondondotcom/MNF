@@ -21,9 +21,12 @@
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const initials = (name) => name.trim().split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+  // "Joe C" stays together as the big name rather than showing just "C"
   const splitName = (name) => {
     const parts = name.trim().split(/\s+/);
-    return parts.length === 1 ? { first: "", last: parts[0] } : { first: parts.slice(0, -1).join(" "), last: parts[parts.length - 1] };
+    const last = parts[parts.length - 1];
+    if (parts.length === 1 || last.replace(".", "").length <= 2) return { first: "", last: name.trim() };
+    return { first: parts.slice(0, -1).join(" "), last };
   };
   const el = (tag, cls, html) => {
     const e = document.createElement(tag);
