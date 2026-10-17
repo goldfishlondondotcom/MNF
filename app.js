@@ -7,7 +7,8 @@
   const RECORD = new URLSearchParams(location.search).has("record");
   if (RECORD) document.body.classList.add("recording");
 
-  const DEFAULT_FORMATIONS = { 5: "2-2", 6: "2-1-2", 7: "2-3-1", 8: "3-3-1" };
+  // No fixed keeper (it rotates), so formations cover every player
+  const DEFAULT_FORMATIONS = { 5: "2-1-2", 6: "2-2-2", 7: "2-3-2", 8: "3-2-3" };
   const COUNT_WORDS = { 5: "Five", 6: "Six", 7: "Seven", 8: "Eight" };
   const STEP = 1.5; // seconds each player gets in the spotlight
 
@@ -45,17 +46,17 @@
     const count = team.players.length;
     let formation = team.formation || DEFAULT_FORMATIONS[count];
     let rows = (formation || "").split("-").map(Number);
-    if (rows.reduce((a, b) => a + b, 0) !== count - 1) {
+    if (rows.reduce((a, b) => a + b, 0) !== count) {
       console.warn(`Formation "${formation}" doesn't fit ${count} players for ${team.name}; using a default.`);
-      formation = DEFAULT_FORMATIONS[count] || String(count - 1);
+      formation = DEFAULT_FORMATIONS[count] || String(count);
       rows = formation.split("-").map(Number);
     }
     team.formation = formation;
 
     const spreads = [0, 0, 0.5, 0.68, 0.8, 0.86];
-    const spots = [{ u: 0.5, v: 0.06, role: "GK" }];
+    const spots = [];
     rows.forEach((n, i) => {
-      const v = rows.length === 1 ? 0.45 : 0.3 + (i * 0.5) / (rows.length - 1);
+      const v = rows.length === 1 ? 0.45 : 0.14 + (i * 0.66) / (rows.length - 1);
       const role = i === 0 ? "DEF" : i === rows.length - 1 ? "FWD" : "MID";
       const spread = spreads[n] ?? 0.9;
       for (let j = 0; j < n; j++) {
